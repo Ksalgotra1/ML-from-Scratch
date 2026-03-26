@@ -67,6 +67,19 @@ python main.py 1   # Logistic Regression + GDA
 python main.py 5   # Locally Weighted Regression + Tau Sweep
 ```
 
+## Results & Observations
+
+### 1. Classification Performance (Logistic Regression vs. GDA)
+On the validation datasets, both models performed exceptionally well:
+- **Logistic Regression (Newton's Method):** Reached **91.00% accuracy**. Convergence was extremely fast due to the second-order Hessian updates.
+- **Gaussian Discriminant Analysis:** Also achieved **91.00% accuracy**. Since the data was roughly Gaussian, the generative approach matched the discriminative approach perfectly.
+
+### 2. Locally Weighted Regression (LWR) Bandwidth Tuning
+During hyperparameter tuning (sweeping $\tau$ values from 0.03 to 10.0), the model's Mean Squared Error (MSE) responded heavily to the bandwidth parameter:
+- **Underfitting:** Large $\tau$ values (e.g., $\tau = 10.0$) resulted in high MSE (0.433) as the model smoothed over local variations too aggressively.
+- **Optimal Bandwidth:** The sweep identified **$\tau = 0.05$** as the optimal bandwidth, achieving the lowest validation MSE (**0.012**).
+- **Test Performance:** Running the optimal model ($\tau = 0.05$) on the unseen test set yielded a final impressive MSE of **0.016**.
+
 ## Architecture & Optimization Flow
 
 ```mermaid
