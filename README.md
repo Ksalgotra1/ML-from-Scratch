@@ -121,6 +121,3 @@ graph TD
 
 ## Why this project?
 Building these models from scratch ensures a deep mathematical understanding of how learning algorithms actually work under the hood—from matrix calculus (Hessian inversion) to probabilistic generative modeling.
-
----
-*Created by Krishna Salgotra*
